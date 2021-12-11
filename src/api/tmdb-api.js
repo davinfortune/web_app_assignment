@@ -91,21 +91,6 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getTVShows = () => {
-    var key = "77885d4f621d9af0c6c5c522b1c9df9d";
-    return fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=en-US&include_adult=false&include_video=false&page=1`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-       throw error
-    });
-  };
-
   export const getShows = () => {
     var key = "77885d4f621d9af0c6c5c522b1c9df9d";
     return fetch(
@@ -119,4 +104,40 @@ export const getMovie = (args) => {
     .catch((error) => {
        throw error
     });
+  };
+
+  export const getShow = (args) => {
+    var key = "77885d4f621d9af0c6c5c522b1c9df9d";
+    // console.log(args)
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${key}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+  export const getShowImages = ({ queryKey }) => {
+    var key = "77885d4f621d9af0c6c5c522b1c9df9d";
+    const [, idPart] = queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${key}`
+    ).then( (response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+  
+    })
+    .catch((error) => {
+      throw error
+   });
   };

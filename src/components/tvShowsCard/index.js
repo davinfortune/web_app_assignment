@@ -15,6 +15,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
+
+//TODO
 import { MoviesContext } from "../../contexts/moviesContext";
 
 const useStyles = makeStyles({
@@ -25,43 +27,42 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MovieCard({ movie, action }) {
+export default function ShowCard({ show, action }) {
   const classes = useStyles();
-  const { favorites, addToFavorites } = useContext(MoviesContext);
+  // const { favorites, addToFavorites } = useContext(MoviesContext);
 
-  if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
-  } else {
-    movie.favorite = false
-  }
+  // if (favorites.find((id) => id === show.id)) {
+  //   show.favorite = true;
+  // } else {
+  //   show.favorite = false
+  // }
 
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+  // const handleAddToFavorite = (e) => {
+  //   e.preventDefault();
+  //   addToFavorites(show);
+  // };
 
   return (
     <Card className={classes.card}>
       <CardHeader
       className={classes.header}
-      avatar={
-        movie.favorite ? (
-          <Avatar className={classes.avatar}>
-            <FavoriteIcon />
-          </Avatar>
-        ) : null
-      }
+      avatar={null}
+        // show.favorite ? (
+        //   <Avatar className={classes.avatar}>
+        //     <FavoriteIcon />
+        //   </Avatar>
+        // ) : null
       title={
         <Typography variant="h5" component="p">
-          {movie.name}{" "}
+          {show.name}{" "}
         </Typography>
       }
     />
       <CardMedia
         className={classes.media}
         image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+          show.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${show.poster_path}`
             : img
         }
       />
@@ -70,20 +71,20 @@ export default function MovieCard({ movie, action }) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {movie.release_date}
+              {show.first_air_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
+              {"  "} {show.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
+      {action(show)}
+        <Link to={`/tvshows/${show.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

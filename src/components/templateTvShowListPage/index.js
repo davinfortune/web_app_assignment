@@ -3,7 +3,7 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import MovieList from "../tvShowList";
+import TvList from "../tvShowList";
 
 const useStyles = makeStyles({
   root: {
@@ -43,7 +43,7 @@ function TvShowListPageTemplate({ shows, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList action={action} movies={displayedShows}></MovieList>
+        <TvList action={action} shows={displayedShows}></TvList>
       </Grid>
     </Grid>
   );
