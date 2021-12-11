@@ -14,7 +14,7 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
-import { Button } from "@material-ui/core";
+import { Button, List, ListItem, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,11 +33,12 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 220,
     backgroundColor: "rgb(255,255,255)",
   },
+
 }));
 
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("tvgenres", getGenres);
 
   if (isLoading) {
     return <Spinner />;
@@ -47,7 +48,9 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
-  genres.unshift({ id: "0", name: "All" });
+  if(genres[0].name != "All"){
+    genres.unshift({ id: "0", name: "All" });
+   }
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -67,7 +70,7 @@ export default function FilterMoviesCard(props) {
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="medium" />
-          Filter the movies.
+          Filter the Shows.
         </Typography>
         <TextField
         className={classes.formControl}
@@ -95,9 +98,22 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
-        <Button variant="contained" href="/upcomingtvshows">
-         Upcoming Shows
-        </Button>
+        <List>
+          <ListItem>
+          <Grid container justifyContent="center">
+          <Button variant="contained" href="/upcomingtvshows">
+              Upcoming Shows
+            </Button>
+          </Grid>
+          </ListItem>
+          <ListItem>
+          <Grid container justifyContent="center">
+            <Button variant="contained" href="/tvshows/playlist">
+              Your Playlist
+            </Button>
+          </Grid>
+          </ListItem>
+        </List>
       </CardContent>
     </Card>
   );

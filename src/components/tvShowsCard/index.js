@@ -17,7 +17,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 
 //TODO
-import { MoviesContext } from "../../contexts/moviesContext";
+import { ShowsContext } from "../../contexts/showsContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -29,29 +29,29 @@ const useStyles = makeStyles({
 
 export default function ShowCard({ show, action }) {
   const classes = useStyles();
-  // const { favorites, addToFavorites } = useContext(MoviesContext);
+  const { playlists, addToPlaylist } = useContext(ShowsContext);
 
-  // if (favorites.find((id) => id === show.id)) {
-  //   show.favorite = true;
-  // } else {
-  //   show.favorite = false
-  // }
+  if (playlists.find((id) => id === show.id)) {
+    show.playlist = true;
+  } else {
+    show.playlist = false
+  }
 
-  // const handleAddToFavorite = (e) => {
-  //   e.preventDefault();
-  //   addToFavorites(show);
-  // };
+  const handleAddToPlaylist = (e) => {
+    e.preventDefault();
+    addToPlaylist(show);
+  };
 
   return (
     <Card className={classes.card}>
       <CardHeader
       className={classes.header}
-      avatar={null}
-        // show.favorite ? (
-        //   <Avatar className={classes.avatar}>
-        //     <FavoriteIcon />
-        //   </Avatar>
-        // ) : null
+      avatar={
+        show.favorite ? (
+          <Avatar className={classes.avatar}>
+            <FavoriteIcon />
+          </Avatar>
+        ) : null}
       title={
         <Typography variant="h5" component="p">
           {show.name}{" "}
