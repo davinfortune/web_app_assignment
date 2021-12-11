@@ -17,15 +17,20 @@ import Spinner from '../spinner'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    paddingTop: "50px",
+    paddingBottom: "50px",
     maxWidth: 345,
-    backgroundColor: "rgb(204, 204, 0)",
+    backgroundColor: "#f50057",
+    color: "white",
+    textAlign: "center",
   },
   media: { height: 300 },
 
   formControl: {
+    textAlign: "left",
     margin: theme.spacing(1),
     minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "rgb(255,255,255)",
   },
 }));
 
@@ -60,7 +65,7 @@ export default function FilterMoviesCard(props) {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
+          <SearchIcon fontSize="medium" />
           Filter the movies.
         </Typography>
         <TextField
@@ -89,18 +94,6 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
-      </CardContent>
-      <CardMedia
-        className={classes.media}
-        image={img}
-        title="Filter"
-      />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
       </CardContent>
     </Card>
   );
