@@ -16,19 +16,19 @@ const TvShowsPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const shows = data.results;
-  console.log(shows);
 
   // Redundant, but necessary to avoid app crashing.
-  const playlists = shows.filter(m => m.playlists)
-  localStorage.setItem('playlists', JSON.stringify(playlists))
-  const addToPlaylist = (playlists) => true 
+  // const playlists = shows.filter(m => m.playlist)
+  // localStorage.setItem('playlists', JSON.stringify(playlists))
+  // const addToPlaylist = (showId) => true 
+  // console.log(playlists);
 
   return (
     <PageTemplate
       title="Tv Shows"
       shows={shows}
-      action={(movie) => {
-        return <AddToPlaylistIcon movie={movie} />
+      action={(show) => {
+        return <AddToPlaylistIcon movie={show} />
       }}
     />
   );

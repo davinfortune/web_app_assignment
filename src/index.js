@@ -11,6 +11,7 @@ import SiteHeader from './components/siteHeader';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
+import ShowsContextProvider from "./contexts/showsContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import TvShowsPage from './pages/tvShowsPage';
 import UpcomingTvShowsPage from './pages/upcomingTvShowsPage';
@@ -32,19 +33,23 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
-      <Switch>
-      <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-        <Route path="/reviews/:id" component={MovieReviewPage} />
-        <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-        <Route path="/movies/:id" component={MoviePage} />
-        <Route path="/tvshows/:id" component={ShowPage} />
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/upcomingMovies" component={MovieUpcomingPage} />
-        <Route exact path="/tvshows" component={TvShowsPage} />
-        <Route exact path="/tvshows/playlist" component={PlaylistShowsPage} />
-        <Route exact path="/upcomingtvshows" component={UpcomingTvShowsPage} />
-        <Redirect from="*" to="/" />
-      </Switch>
+          <Switch>
+            <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+            <Route path="/reviews/:id" component={MovieReviewPage} />
+            <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+            <Route path="/movies/:id" component={MoviePage} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/upcomingMovies" component={MovieUpcomingPage} />
+            <ShowsContextProvider>
+                <Switch>
+                  <Route exact path="/tvshows" component={TvShowsPage} />
+                  <Route exact path="/upcomingtvshows" component={UpcomingTvShowsPage} />
+                  <Route path="/tvshows/playlist" component={PlaylistShowsPage} />
+                  <Route path="/tvshows/:id" component={ShowPage} />
+                </Switch>
+            </ShowsContextProvider>
+            <Redirect from="*" to="/" />
+          </Switch>
       </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

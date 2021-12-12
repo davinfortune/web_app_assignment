@@ -13,14 +13,13 @@ const ShowsContextProvider = (props) => {
   const addToPlaylist= (show) => {
     var exists = false;
     for(let i = 0; i<playlists.length; i++){
-      if(show.id == playlists[i]){
+      if(show.id === playlists[i]){
         exists = true;
       }
     }
-    if(exists == false){
+    if(exists === false){
       setPlaylists([...playlists, show.id])
     }
-    console.log(playlists);
   };
 
   const removeFromPlaylist = (show) => {
@@ -31,7 +30,7 @@ const ShowsContextProvider = (props) => {
 
   return (
     <ShowsContext.Provider
-    value={{
+    value={{ 
       playlists,
       addReview,
       addToPlaylist,

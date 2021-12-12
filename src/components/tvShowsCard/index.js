@@ -30,11 +30,12 @@ const useStyles = makeStyles({
 export default function ShowCard({ show, action }) {
   const classes = useStyles();
   const { playlists, addToPlaylist } = useContext(ShowsContext);
+  console.log(playlists);
 
   if (playlists.find((id) => id === show.id)) {
     show.playlist = true;
   } else {
-    show.playlist = false
+    show.playlist = false;
   }
 
   const handleAddToPlaylist = (e) => {

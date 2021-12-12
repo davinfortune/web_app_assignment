@@ -8,6 +8,8 @@ const tvShowList = ( {shows, action }) => {
       <Show key={m.id} show={m} action={action} />
     </Grid>
   ));
+  console.log("shows");
+  console.log(shows);
   return showCards;
 };
 
