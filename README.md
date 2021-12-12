@@ -1,16 +1,54 @@
-# Week 8
+# Assignment 1 - ReactJS app.
 
-In this lab, we will complete the Movies Fan app.
-<br></br>
-The only remaining feature is to enable the user to write their review of a favourite movie. Also, there are known bugs identified in the previous lab that we will fix, and we will improve the app's performance by caching the server state.
-<br></br>
-The new React features used in this development iteration include:
-<br></br>
-The Render props pattern.
-The Context API.
-3rd party hooks, e.g. useForm.
-<br></br>
-[Note. in the previous lab, you developed an Upcoming movies page as an exercise. We will temporally break this feature as a result of refactoring done in this lab. However, the exercise at the end will allow you to get it working again.] ]
+Name: Davin Fortune
 
+## Overview.
+
+assignment 1 web app and agile software
+
+### Features.
+
++ Tv Shows
++ Tv Watchlist + Add to Watchlist
++ Tv Details page
++ Reworked filters card
++ Upcoming Tv Shows
++ Top Rated Movies
+
+## Setup requirements.
+
+npm install
+npm start
+have no other servers running on port 3000
+
+## API endpoints.
+
+
++ Current Tv Shows - discover/tvshows
++ Tv Show Details - tvshows/:id
++ Personal Watchlist - /playlist
++ Upcoming Tv Shows - /upcomingtvshows
+
+## App Design.
+
+![ ](./images/view.png)
+
+![ ](./images/view1.png)
+![ ](./images/view2.png)
+
+
+
+### Routing.
+
+
++ /tvshows - displays all published tv shows.
++ /tvshows/:id - displays a particular tvshow.
++ /playlist - shows users playlist/watchlist
++ /popularmovies - shows top rated movies
++ /upcomingtvshows- shows upcoming show
+ 
+
+
+## Independent learning (If relevant).
 
 
