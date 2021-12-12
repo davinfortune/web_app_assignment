@@ -32,7 +32,6 @@ have no other servers running on port 3000
 ## App Design.
 
 ![ ](./images/view.png)
-
 ![ ](./images/view1.png)
 ![ ](./images/view2.png)
 
