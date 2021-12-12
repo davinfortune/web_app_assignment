@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TemplateShowPage = ({ show, children }) => {
+  console.log(show);
   const classes = useStyles();
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: show.id }],
