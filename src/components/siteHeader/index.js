@@ -29,8 +29,9 @@ const SiteHeader = ( { history }) => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
+    { label: "Favorite Movies", path: "/movies/favorites" },
     { label: "Upcoming Movies", path: "/upcomingMovies" },
+    { label: "Top Rated Movies", path: "/popularMovies" },
     { label: "Tv Shows", path: "/tvshows" },
     { label: "Tv Watchlist", path : "/playlist" },
     { label : "Upcoming Tv Shows", path: "/upcomingtvshows"},
@@ -51,9 +52,7 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          <Typography variant="h6" className={classes.title}>
-            All you ever wanted to know about Movies!
-          </Typography>
+
             {isMobile ? (
               <>
                 <IconButton
