@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import PageTemplate from "../components/templateMovieListPage";
+import PageTemplate from "../components/templateTvShowListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getShow } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
-import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
+import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
 import WriteReview from "../components/cardIcons/writeReview";
 
 const PlaylistShowsPage = () => {
@@ -24,19 +24,18 @@ const PlaylistShowsPage = () => {
   if (isLoading) {
     return <Spinner />;
   }
-  const movies = favoriteMovieQueries.map((q) => q.data);
+  const shows = favoriteMovieQueries.map((q) => q.data);
   const toDo = () => true;
 
 
   return (
     <PageTemplate
       title="Your Playlist"
-      movies={movies}
-      action={(movie) => {
+      shows={shows}
+      action={(show) => {
         return (
           <>
-            <RemoveFromFavorites movie={movie} />
-            <WriteReview movie={movie} />
+            <RemoveFromPlaylist show={show} />
           </>
         );
       }}

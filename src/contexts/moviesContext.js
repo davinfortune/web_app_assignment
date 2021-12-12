@@ -28,6 +28,12 @@ const MoviesContextProvider = (props) => {
     console.log(myPlaylist);
   }; 
 
+  const removeFromPlaylist = (show) => {
+    setMyPlaylist( myPlaylist.filter(
+      (mId) => mId !== show.id
+    ) )
+  };
+
 
   // We will use this function in a later section
   const removeFromFavorites = (movie) => {
@@ -50,6 +56,7 @@ const MoviesContextProvider = (props) => {
       removeFromFavorites,
       addReview,
       addToPlaylist,
+      removeFromPlaylist,
     }}
   >
     {props.children}
