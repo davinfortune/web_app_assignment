@@ -17,7 +17,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 
 //TODO
-import { ShowsContext } from "../../contexts/showsContext";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -29,10 +29,9 @@ const useStyles = makeStyles({
 
 export default function ShowCard({ show, action }) {
   const classes = useStyles();
-  const { playlists, addToPlaylist } = useContext(ShowsContext);
-  console.log(playlists);
+  const { myPlaylist, addToPlaylist } = useContext(MoviesContext);
 
-  if (playlists.find((id) => id === show.id)) {
+  if (myPlaylist.find((id) => id === show.id)) {
     show.playlist = true;
   } else {
     show.playlist = false;
@@ -40,6 +39,8 @@ export default function ShowCard({ show, action }) {
 
   const handleAddToPlaylist = (e) => {
     e.preventDefault();
+    // console.log("triggered handle add to playlist");
+    // console.log(show);
     addToPlaylist(show);
   };
 

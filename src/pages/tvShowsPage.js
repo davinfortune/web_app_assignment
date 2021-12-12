@@ -6,7 +6,7 @@ import { getShows } from "../api/tmdb-api";
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylists";
 
 const TvShowsPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('shows', getShows)
+  const {  data, error, isLoading, isError }  = useQuery('tvshows', getShows)
 
   if (isLoading) {
     return <Spinner />
@@ -28,7 +28,7 @@ const TvShowsPage = (props) => {
       title="Tv Shows"
       shows={shows}
       action={(show) => {
-        return <AddToPlaylistIcon movie={show} />
+        return <AddToPlaylistIcon show={show} />
       }}
     />
   );

@@ -98,22 +98,6 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
-        <List>
-          <ListItem>
-          <Grid container justifyContent="center">
-          <Button variant="contained" href="/upcomingtvshows">
-              Upcoming Shows
-            </Button>
-          </Grid>
-          </ListItem>
-          <ListItem>
-          <Grid container justifyContent="center">
-            <Button variant="contained" href="/tvshows/playlist">
-              Your Playlist
-            </Button>
-          </Grid>
-          </ListItem>
-        </List>
       </CardContent>
     </Card>
   );

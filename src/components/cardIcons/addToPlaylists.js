@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { ShowsContext } from "../../contexts/showsContext";
+import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcon from'@material-ui/icons/PlaylistAdd';
 import IconButton from "@material-ui/core/IconButton";
 
-const AddToPlaylistIcon = ({ movie }) => {
-    const context = useContext(ShowsContext);
+const AddToPlaylistIcon = ({ show }) => {
+    const context = useContext(MoviesContext);
 
     const handleAddToPlaylist = (e) => {
       e.preventDefault();
-      context.addToPlaylist(movie);
+      // console.log("at handle add to playlist");
+      // console.log(show);
+      context.addToPlaylist(show);
     };
     return (
       <IconButton aria-label="add to playlist" onClick={handleAddToPlaylist}>
